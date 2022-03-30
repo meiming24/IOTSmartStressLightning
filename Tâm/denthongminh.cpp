@@ -1,21 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
-class thoi_Tiet
+class Thoi_tiet
 {
 	protected:
-		int humid;
-		int cur_humid = 0;
+		int do_Am;
+		int cur_do_Am = 0;
 	public:
 		void nhapvaodoam()
-		{cout<< "\nNhap do am hien tai: " ; cin>> cur_humid;}
+		{cout<< "\nNhap do am hien tai: " ; cin>>cur_do_Am ;}
 		void inradoamhientai()
 		{
-		 showthoi_Tiet();
-		 cout<<endl<<"Do am hien tai la: "<< cur_humid<<"%";
+		 showThoi_tiet();
+		 cout<<endl<<"Do am hien tai la: "<< cur_do_Am<<"%";
 		 bool check = true ;
 		 while(check)
 		 {
-		 	if (cur_humid> humid)
+		 	if (cur_do_Am  > do_Am)
 		 {
 		 	cout <<endl<<"Do am hien tai lon -Can tang  them do sang";
 		 	check=false;
@@ -27,8 +27,8 @@ class thoi_Tiet
 	}
 		
 }
-        void showthoi_Tiet()
+        void showThoi_tiet()
         {
-        	cout<<endl<<"Do am ly tuong : "<< humid<< "%";
+        	cout<<endl<<"Do am ly tuong : "<< do_Am<< "%";
 		}
 };
