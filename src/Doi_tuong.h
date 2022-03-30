@@ -8,6 +8,7 @@ class Doi_tuong{
 	public:
 		static int tong;
 		Doi_tuong(){
+			so_Luong = 0;
 		}
 		
 		void set_Vat_Can(string t, int s){
