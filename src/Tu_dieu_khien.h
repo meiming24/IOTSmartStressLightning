@@ -8,6 +8,7 @@ class Tu_dieu_khien{
 		int so_Luong;
 	public:
 		
+		
 		void dieu_Chinh_Cong_Suat(){
 			int cong_Suat_Thay_Doi;
 			for(int i = 0; i < this->so_Luong; i++){
