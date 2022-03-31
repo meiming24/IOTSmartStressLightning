@@ -60,34 +60,6 @@ class Thoi_tiet
 				cout<<"Toc do gio hien tai la: "<< fixed << setprecision(1) << toc_Do_Gio <<" m/s"<< endl;
 				cout<<"Khong xuat hien suong mu, khong can bat den!"<<endl;
 			} 
-=======
-		int do_Am;
-		int cur_do_Am = 0;
-	public:
-		void nhap_Do_Am(){
-			cout<< "\nNhap do am hien tai: " ; cin>>cur_do_Am ;
-		}
-		void get_Do_Am() {
-			showThoi_tiet();
-			cout<<endl<<"Do am hien tai la: "<< cur_do_Am<<"%";
-			bool check = true;
-			
-			while(check){
-		 		if (cur_do_Am  > do_Am) {
-			 		cout <<endl<<"Do am hien tai lon -Can tang  them do sang";
-			 		check=false;
-		 		}
-				else {
-					cout<<"\nKhong can tang  them do sang ";
-					break;
-				}
-			}
-
-		}
-        void showThoi_tiet() {
-        	cout<<endl<<"Do am ly tuong : "<< do_Am<< "%";
->>>>>>> 9f12610a352dd67a6c3cb319fa0f967d342700fd
-		}
 };
 
 #endif
