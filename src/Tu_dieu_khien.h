@@ -48,7 +48,7 @@ class Tu_dieu_khien{
 		}
 		
 		void he_Thong_Dieu_Khien(){
-			do{
+			while(true){
 				cout << "__________________________________________________";
 				cout << endl << "|                                                 |";
 				cout << endl << "|              HE THONG DIEU KHIEN                |";
@@ -72,13 +72,28 @@ class Tu_dieu_khien{
 				int lua_Chon;
 				cout << endl << "Nhap lua chon cua ban(0 -> 4): "; cin >> lua_Chon;
 				switch(lua_Chon){
-					case 1: this->dieu_Chinh_Cong_Suat(); break;
-					case 2: this->dieu_Chinh_Trang_Thai(); break;
-					case 3: this->nhap_Thoi_Gian_Kiem_Tra(); break;
-					case 4: this->tong_Tieu_Thu(); break;
-					case 0: return 0; break;
+					case 1: 
+						this->dieu_Chinh_Cong_Suat(); 
+						cout << endl << "Nhap phim bat ky de tiep tuc."; getch();
+						break;
+					case 2: 
+						this->dieu_Chinh_Trang_Thai();
+						cout << endl << "Nhap phim bat ky de tiep tuc."; getch();
+						break;
+					case 3: 
+						this->nhap_Thoi_Gian_Kiem_Tra();
+						cout << endl << "Nhap phim bat ky de tiep tuc."; getch();
+						break;
+					case 4: 
+						this->tong_Tieu_Thu();
+						cout << endl << "Nhap phim bat ky de tiep tuc."; getch();
+						break;
+					case 0: return; break;
+					default: 
+						cout << endl << "Khong co chuc nang nay!";
+						cout << endl << "Nhap phim bat ky de tiep tuc."; getch();
 				}
-			} while(lua_Chon != 0);
+			}
 		}
 };
 
