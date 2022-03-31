@@ -9,7 +9,12 @@ class Tu_dieu_khien{
 	public:
 		
 		
+		void nhap_So_Luong(){
+			cout << endl << "Nhap so luong den thuc hien yeu cau cua ban: "; cin >> this->so_Luong;
+		}
+		
 		void dieu_Chinh_Cong_Suat(){
+			this->nhap_So_Luong();
 			int cong_Suat_Thay_Doi;
 			for(int i = 0; i < this->so_Luong; i++){
 				cout << endl << "Nhap luong cong suat thay doi cua den so " << i+1 << " :" ; cin >> cong_Suat_Thay_Doi;
@@ -27,6 +32,7 @@ class Tu_dieu_khien{
 		}
 		
 		void dieu_Chinh_Trang_Thai(){
+			this->nhap_So_Luong();
 			string trang_Thai_Thay_Doi;
 			for(int i = 0; i < this->so_Luong; i++){
 				cout << endl << "Nhap trang thai thay doi cua den so " << i+1 << " (ON/OFF):"; cin >> trang_Thai_Thay_Doi;
@@ -35,17 +41,26 @@ class Tu_dieu_khien{
 		}
 		
 		void nhap_Thoi_Gian_Kiem_Tra(){
+			this->nhap_So_Luong();
 			cout << endl << "Nhap vao thoi gian ban muon kiem tra he thong den: ";
 			dong_Ho.nhap_Thoi_Gian();
 		}
 		
 		void tong_Tieu_Thu(){
+			this->nhap_So_Luong();
 			float tong_Tieu_Thu_Nang_Luong;
 			for(int i = 0; i < this->so_Luong; i++){
 				cout << endl << "Luong tieu thu nang luong cua den" << i+1 << " :" << den[i].get_Tieu_Thu_Nang_Luong();
 				tong_Tieu_Thu_Nang_Luong += den[i].get_Tieu_Thu_Nang_Luong();
 			}
 			cout << endl << "Tong luong tieu thu nang luong cua " << this->so_Luong << " den la: " << tong_Tieu_Thu_Nang_Luong;
+		}
+		
+		void thong_Tin_Den(){
+			this->nhap_So_Luong();
+			for(int i = 0; i < this->so_Luong; i++){
+				den[i].xuat();
+			}
 		}
 		
 		void he_Thong_Dieu_Khien(){
@@ -65,6 +80,9 @@ class Tu_dieu_khien{
 				cout << endl << "|-------------------------------------------------|";
 				cout << endl << "|                                                 |";
 				cout << endl << "|  (4): Xem nang luong tieu thu dien cua den      |";
+				cout << endl << "|-------------------------------------------------|";
+				cout << endl << "|                                                 |";
+				cout << endl << "|  (5): Xem thong tin den                         |";
 				cout << endl << "|-------------------------------------------------|";
 				cout << endl << "|                                                 |";
 				cout << endl << "|  (0): Thoat chuong trinh                        |";
@@ -87,6 +105,10 @@ class Tu_dieu_khien{
 						break;
 					case 4: 
 						this->tong_Tieu_Thu();
+						cout << endl << "Nhap phim bat ky de tiep tuc."; getch();
+						break;
+					case 5: 
+						this->thong_Tin_Den();
 						cout << endl << "Nhap phim bat ky de tiep tuc."; getch();
 						break;
 					case 0: return; break;

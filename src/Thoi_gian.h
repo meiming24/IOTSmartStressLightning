@@ -23,7 +23,7 @@ class Thoi_gian {
 		
 		void nhap_Thoi_Gian(){
 			char c;
-//			cout << "Nhap thoi gian (gio:phut:giay): ";
+			cout << "Nhap thoi gian (gio:phut:giay): ";
 			cin >> gio >> c >> phut >> c >> giay;
 		}
 		
