@@ -101,7 +101,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit6]
-FileName=Tram_dien.h
+FileName=Tu_dieu_khien.h
 CompileCpp=1
 Folder=
 Compile=1

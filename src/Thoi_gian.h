@@ -2,73 +2,67 @@
 #define THOIGIAN_H
 
 class Thoi_gian {
-
 	protected:
-		time_t t;
-		string thoi_Gian; 
+		int gio;
+		int phut;
+		int giay;
 	public:
-		
 		Thoi_gian(){
-			thoi_Gian = "00:00:00";
+			int gio = phut = giay = 0;
 		}
 		
-		string get_Thoi_Gian_Thuc(){
-			time(&t);
-			string res = ctime(&t);
-			for(int i=0;i<8;i++){
-				thoi_Gian[i] = res[i + 11];
+		Thoi_gian(int gio_Moi, int phut_Moi, int giay_Moi){
+			gio = gio_Moi;
+			phut = phut_Moi;
+			giay = giay_Moi;
+		}
+		
+		void set_Thoi_Gian(int a, int b, int c){
+			gio = a; phut = b; giay = c;
+		}
+		
+		void nhap_Thoi_Gian(){
+			char c;
+//			cout << "Nhap thoi gian (gio:phut:giay): ";
+			cin >> gio >> c >> phut >> c >> giay;
+		}
+		
+		void chuan_Hoa_Thoi_Gian(){
+			phut += giay/60;
+			giay %= 60;
+			gio += phut/60;
+			phut %= 60;
+			gio %= 24;
+		}
+		
+		void in_Thoi_Gian(){
+			if((giay < 0 || phut < 0 || gio < 0) || (giay > 60 || gio > 60 || gio > 24)) {
+				chuan_Hoa_Thoi_Gian();
 			}
-			return thoi_Gian;
+			if(gio >= 0 && gio <= 10) cout << "0" << gio << ":";
+			else cout << gio << ":";
+			if(phut >= 0 && phut <= 10) cout << "0" << phut << ":";
+			else cout << phut << ":";
+			if(giay >= 0 && giay <= 10) cout << "0" << giay << endl;
+			else cout << giay << endl;
 		}
 		
-		string get_Thoi_Gian(){
-			return thoi_Gian;
-		}
-		
-		string set_Thoi_Gian(string gio_Phut_Giay){
-			thoi_Gian = gio_Phut_Giay;
-			return thoi_Gian;
-		}	 
-		
-		int get_Gio (){
-			int gio = (thoi_Gian[0] - '0') * 10 +  (thoi_Gian[1] - '0');
+		int get_Gio(){
 			return gio;
 		}
 		
-		int get_Phut (){
-			int phut = (thoi_Gian[3] - '0') * 10 +  (thoi_Gian[4] - '0');
+		int get_Phut(){
 			return phut;
 		}
 		
-		int get_Giay (){
-			int giay = (thoi_Gian[6] - '0') * 10 +  (thoi_Gian[7] - '0');
+		int get_Giay(){
 			return giay;
 		}
 		
-		int khoang_Thoi_Gian (string t1, string t2) { //00:00:00
-			
-			int giay1, phut1, gio1;
-			
-			if(((t2[6] - '0') * 10 +  (t2[7] - '0')) > ((t1[6] - '0') * 10 +  (t1[7] - '0'))){
-        		phut1 = (t1[3] - '0') * 10 +  (t1[4] - '0');
-				phut1--;
-        		giay1 = ((t1[6] - '0') * 10 +  (t1[7] - '0')) + 60;
-    		}
-
-    		int giay = giay1 - ((t2[6] - '0') * 10 +  (t2[7] - '0'));
-    
-			if((t2[3] - '0') * 10 +  (t2[4] - '0') > ((t1[3] - '0') * 10 +  (t1[4] - '0'))){
-        		gio1 = (t1[0] - '0') * 10 +  (t1[1] - '0');
-				gio1--;
-        		phut1 = ((t1[3] - '0') * 10 +  (t1[4] - '0')) + 60;
-    		}
-    
-			int phut = phut1 - (t2[3] - '0') * 10 +  (t2[4] - '0');
-    		int gio = gio1 - (t2[0] - '0') * 10 +  (t2[1] - '0');
-    		
-    		return gio * 60 * 60 + phut * 60 + giay; 
-    		
+		int get_Khoang_Thoi_Gian (Thoi_gian thoi_Gian){
+			return abs((thoi_Gian.get_Gio() * 60 * 60 + thoi_Gian.get_Phut() * 60 + thoi_Gian.get_Giay()) - (get_Gio() * 60 * 60 + get_Phut() * 60 + get_Giay()));
 		}
+				
 };
 
 #endif
