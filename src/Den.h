@@ -1,64 +1,90 @@
 #ifndef DEN_H
 #define DEN_H
+#include "Thoi_gian.h"
 
 class Den {
-	protected:
+	protected: 
+		Thoi_gian thoi_Gian;
 		string trang_Thai;
-		float tieu_Thu_Nang_Luong, cong_Suat, pham_Vi, 
-		int thoi_Gian_Sang, cuong_Do_Sang;
+		float cong_Suat, pham_Vi, nang_Luong_Tieu_Thu, nang_Luong_Mat_Troi;
+		int thoi_Gian_Cua_Den;
 	public:
 		Den(){
-			trang_Thai = "Binh thuong";
+			trang_Thai = "OFF";
 			cong_Suat = 150;
-			pham_Vi = 150;
-			thoi_Gian_Sang = 0;
-			tieu_thu_Nang_Luong = 0;		
+			pham_Vi = cong_Suat * 0.75;
+			nang_Luong_Tieu_Thu = 0;
+			nang_Luong_Mat_Troi = 0;
+			thoi_Gian.set_Thoi_Gian(00, 00, 00);              //9h => dong_Ho(09:00:00)
+		}
+		
+		void nhap(){
+			fflush(stdin);
+			cout << endl <<"Nhap trang thai cua den (ON/OFF): "; cin >> trang_Thai;
+			cout <<"Nhap cong suat cua den: "; cin >> cong_Suat;
 		}
 		
 		void set_Trang_Thai(string trang_Thai_Moi) {
-			this.trang_Thai = trang_Thai_Moi;
+			trang_Thai = trang_Thai_Moi;
 		}
 		
 		string get_Trang_Thai(){
 			return trang_Thai;
 		}
 		
-		void setThoi_Gian_Sang(int thoi_Gian_Sang_Moi) {
-			this.thoi_Gian_Sang = thoi_Gian_Sang_Moi;
-		}
-		
-		int get_Thoi_Gian_Sang() {
-			return thoi_Gian_Sang;
-		}
-		
 		void set_Cong_Suat(float cong_Suat_Moi) {
-			this.cong_Suat = cong_Suat_Moi;
+			cong_Suat = cong_Suat_Moi;
 		}
 		
 		float get_Cong_Suat() {
 			return cong_Suat;
 		}
 		
-		void set_Pham_Vi(float pham_Vi_Moi) {
-			this.pham_Vi = pham_Vi_Moi;
-		}
-		
 		float get_Pham_Vi() {
+			pham_Vi = cong_Suat * 0.75;
 			return pham_Vi;
 		}
 		
-		void set_Cuong_Do_Sang(int cuong_Do_Sang_Moi) {
-			this.cuong_Do_Sang = cuong_Do_Sang_Moi;
+		int get_Thoi_Gian_Cua_Den () {
+			return thoi_Gian_Cua_Den;
 		}
 		
-		int get_Cuong_Do_Sang() {
-			return cuong_Do_Sang;
+		void set_Thoi_Gian_Cua_Den(int x){
+			thoi_Gian_Cua_Den = x;
 		}
 		
-		float get_Tieu_Thu_Nang_Luong () {
-			this.tieu_Thu_Nang_Luong = this.cong_Suat * this.thoi_Gian_Sang;
-			return this.tieu_Thu_Nang_Luong;
+		
+		
+		float get_Nang_Luong_Tieu_Thu () {
+			nang_Luong_Tieu_Thu = cong_Suat * get_Thoi_Gian_Cua_Den ();
+			return nang_Luong_Tieu_Thu;
+		}
+		
+		Thoi_gian get_Thoi_Gian(){
+			return thoi_Gian;
+		}
+		
+//		void hoat_Dong() {
+//			
+//		}
+		
+		void xuat(){
+//			hoat_Dong();
+			if(trang_Thai == "ON") {
+				cout << endl;
+				cout <<"Den dang bat"<< endl;
+				cout <<"Cong suat cua den la "<< get_Cong_Suat() <<" W"<< endl;
+				cout <<"Pham vi hien tai cua den la "<< get_Pham_Vi() <<" m^2"<< endl;
+				cout <<"Nang luong tieu thu cua den la "<< fixed << setprecision(2) << get_Nang_Luong_Tieu_Thu() <<" Wh"<< endl;
+				cout << endl;
+			}
+			else {
+				cout << endl;
+				cout <<"Den dang tat"<< endl;
+				cout << endl;
+			} 
 		}
 };
 
 #endif
+

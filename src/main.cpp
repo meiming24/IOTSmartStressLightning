@@ -1,10 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
 #include "Den.h"
+#include "Tu_dieu_khien.h"
 
 int main(){
-	Den den_Thu_Nghiem;
-	den_Thu_Nghiem.nhap();
-	den_Thu_Nghiem.dong_Ho.set_Thoi_Gian("18:00:00");
-	den_Thu_Nghiem.xuat();
+	Tu_dieu_khien t1;
+	t1.nhap_So_Luong();
+	t1.thong_Tin_Den();
+//	Den d1;
+//	d1.nhap();
+//	d1.xuat();
 }
