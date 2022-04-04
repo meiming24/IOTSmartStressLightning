@@ -17,6 +17,19 @@ class Thoi_gian {
 			giay = giay_Moi;
 		}
 		
+		Thoi_gian(Thoi_gian &thoi_Gian){
+			gio = thoi_Gian.gio;
+			phut = thoi_Gian.phut;
+			giay = thoi_Gian.giay;
+		}
+		
+		const Thoi_gian &operator=(const Thoi_gian&thoi_Gian){
+      		gio = thoi_Gian.gio;
+			phut = thoi_Gian.phut;
+			giay = thoi_Gian.giay;
+      		return thoi_Gian;
+  		}
+		
 		void set_Thoi_Gian(int a, int b, int c){
 			gio = a; phut = b; giay = c;
 		}
@@ -28,15 +41,15 @@ class Thoi_gian {
 		}
 		
 		void chuan_Hoa_Thoi_Gian(){
-			phut += giay/60;
-			giay %= 60;
-			gio += phut/60;
-			phut %= 60;
-			gio %= 24;
+			phut = phut + giay/60;
+			giay = giay % 60;
+			gio = gio + phut/60;
+			phut = phut % 60;
+			gio = gio % 24;
 		}
 		
 		void in_Thoi_Gian(){
-			if((giay < 0 || phut < 0 || gio < 0) || (giay > 60 || gio > 60 || gio > 24)) {
+			if((giay < 0 || phut < 0 || gio < 0) || (giay > 60 || gio > 60 || gio >= 24)) {
 				chuan_Hoa_Thoi_Gian();
 			}
 			if(gio >= 0 && gio <= 10) cout << "0" << gio << ":";

@@ -5,6 +5,7 @@ class Thoi_tiet{
 	protected:
 		int do_Am, nhiet_Do;
 		float toc_Do_Gio;
+		bool trang_Thai;
 	public:
 		Thoi_tiet() {
 			nhiet_Do = 0;
@@ -13,11 +14,11 @@ class Thoi_tiet{
 		}
 		
 		void nhap(){
-			cout<<"Nhap nhiet do hien tai: "; 
+			cout<<endl <<"Nhiet do: "; 
 			cin >> nhiet_Do;
-			cout<<"Nhap do am hien tai: "; 
+			cout<<endl<<"Do am: "; 
 			cin >> do_Am;
-			cout<<"Nhap toc do gio hien tai: "; 
+			cout<<endl<<"Toc do gio: "; 
 			cin >> toc_Do_Gio;
 		}
 		
@@ -45,40 +46,18 @@ class Thoi_tiet{
 			return toc_Do_Gio;
 		}
 		
-		void xuat(){
+		bool get_Trang_Thai_Thoi_Tiet(){
 			if (nhiet_Do<=20 && do_Am>=80 && toc_Do_Gio<=3) {
-				cout<<"Nhiet do hien tai la: "<< nhiet_Do <<" do C"<< endl;
-				cout<<"Do am hien tai la: "<< do_Am <<"%"<< endl;
-				cout<<"Toc do gio hien tai la: "<< fixed << setprecision(1) << toc_Do_Gio <<" m/s"<< endl;
 				cout<<"Xuat hien suong mu, can bat den!"<<endl;
+				trang_Thai = true;
 			}
 			else{
-				cout<<"Nhiet do hien tai la: "<< nhiet_Do <<" do C"<< endl;
-				cout<<"Do am hien tai la: "<< do_Am <<"%"<< endl;
-				cout<<"Toc do gio hien tai la: "<< fixed << setprecision(1) << toc_Do_Gio <<" m/s"<< endl;
 				cout<<"Khong xuat hien suong mu, khong can bat den!"<<endl;
-			} 
+				trang_Thai = false;
+			}
+			return trang_Thai; 
 		}
 		
-//		void inradoamhientai(){
-//			showthoi_Tiet();
-//		 	cout<<endl<<"Do am hien tai la: "<< cur_humid<<"%";
-//		 	bool check = true ;
-//		 	while(check){
-//		 		if (cur_humid> humid){
-//		 			cout<<endl<<"Do am hien tai lon -Can tang  them do sang";
-//		 			check=false;
-//		 		}
-//				else{
-//					cout<<"\nKhong can tang  them do sang ";
-//					break;
-//				}
-//			}
-//		
-//		}
-//        void showthoi_Tiet(){
-//        	cout<<endl<<"Do am ly tuong : "<< humid<< "%";
-//		}
 };
 
 #endif
