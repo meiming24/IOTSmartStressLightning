@@ -2,7 +2,7 @@
 #define TUDIEUKHIEN_H
 #include "Den.h"
 #include "Thoi_tiet.h"
-#include "Doi_tuong.h"
+//#include "Doi_tuong.h"
 #include <conio.h>
 
 class Tu_dieu_khien: protected Den{
@@ -10,12 +10,33 @@ class Tu_dieu_khien: protected Den{
 		Thoi_tiet thoi_Tiet;
 //		Doi_tuong doi_Tuong;
 		Thoi_gian dong_Ho;
-		int so_Luong_Den;
+		int so_Luong_Den;   
+		int tong_Doi_Tuong;
 		float tong_Tieu_Thu_Nang_Luong;
 		Den *den = new Den[so_Luong_Den];
 	public:
-		
+
 		Tu_dieu_khien(){
+		}
+		
+		void nhap_Doi_Tuong(){
+			tong_Doi_Tuong = 0;
+			string ten;
+			int so_Luong;
+			char tiep = 'c';
+			do{
+				cout << endl << "Ten doi tuong: "; 
+				fflush(stdin);
+				cin >> ten;
+				cout << endl << "So luong: "; 
+				cin >> so_Luong;
+				tong_Doi_Tuong += so_Luong;
+				cout << endl << "Ban muon nhap them doi tuong (YES: c): "; cin >> tiep;
+			} while (tiep == 'c');
+		}
+		
+		int get_Tong_Doi_Tuong(){
+			return tong_Doi_Tuong;
 		}
 		
 		void che_Do_Tu_Dong(){
@@ -78,28 +99,29 @@ class Tu_dieu_khien: protected Den{
 		void nhap_Thong_So_Kiem_Tra(){
 			cout << endl << "Nhap vao thoi gian ban muon kiem tra he thong den !!!" << endl;
 			dong_Ho.nhap_Thoi_Gian();
-//			cout << endl << "Nhap cac chi so thoi tiet hien tai !!!"; 
-//			thoi_Tiet.nhap();
-//			cout << endl << "Nhap doi tuong !!!";
-//			doi_Tuong.nhap_Doi_Tuong();
+			cout << endl << "Nhap cac chi so thoi tiet hien tai !!!"; 
+			thoi_Tiet.nhap();
+			cout << endl << "Nhap doi tuong !!!";
+			nhap_Doi_Tuong();
+			cout << endl << "Vay tong so doi tuong la: " << get_Tong_Doi_Tuong();
 		}
 		
 		void xu_Ly_Trang_Thai_Den(){
 			for(int i = 0; i < so_Luong_Den; i++){
 				if(den[i].get_Trang_Thai() == "OFF"){
-					if(thoi_Tiet.get_Trang_Thai_Thoi_Tiet() == true){
+					if(thoi_Tiet.get_Trang_Thai_Thoi_Tiet() == 1){
 						den[i].set_Trang_Thai("ON");
 					}
 				}
-//				if(den[i].get_Trang_Thai() == "ON"){
-//					cout << endl << "Den " << i+1 << " se co cong suat moi la: " << den[i].get_Cong_Suat() + doi_Tuong.get_So_Luong() << "W, va se tro lai binh thuong sau khi doi tuong di qua !";
-//				}
+				if(den[i].get_Trang_Thai() == "ON"){
+					cout << endl << "Den " << i+1 << " se co cong suat moi la: " << den[i].get_Cong_Suat() + get_Tong_Doi_Tuong() << "W, va se tro lai binh thuong sau khi doi tuong di qua !";
+				}
 			}
 		}
 		
 		void tong_Tieu_Thu(){
 			for(int i = 0; i < so_Luong_Den; i++){
-				cout << endl << "Luong tieu thu nang luong cua den" << i+1 << " :" << den[i].get_Nang_Luong_Tieu_Thu();
+				cout << endl << "Luong tieu thu nang luong cua den " << i+1 << " :" << den[i].get_Nang_Luong_Tieu_Thu();
 				tong_Tieu_Thu_Nang_Luong += den[i].get_Nang_Luong_Tieu_Thu();
 			}
 			cout << endl << "Tong luong tieu thu nang luong cua " << so_Luong_Den << " den la: " << tong_Tieu_Thu_Nang_Luong;
