@@ -21,8 +21,8 @@ class Den {
 		
 		void nhap(){
 			fflush(stdin);
-			cout << endl <<"Nhap trang thai cua den (ON/OFF): "; cin >> trang_Thai;
-			cout <<"Nhap cong suat cua den: "; cin >> cong_Suat;
+			cout <<"\tTrang thai (ON/OFF): "; cin >> trang_Thai;
+			cout <<"\tCong suat: "; cin >> cong_Suat;
 		}
 		
 		void set_Trang_Thai(string trang_Thai_Moi) {
