@@ -48,7 +48,7 @@ class Thoi_tiet{
 		
 		bool get_Trang_Thai_Thoi_Tiet(){
 			if (nhiet_Do<=20 && do_Am>=80 && toc_Do_Gio<=3) {
-				cout<<"Xuat hien suong mu, can bat den!"<<endl;
+				cout<<endl <<"Xuat hien suong mu, can bat den!"<<endl;
 				trang_Thai = true;
 			}
 			else{

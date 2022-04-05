@@ -84,7 +84,7 @@ class Tu_dieu_khien: protected Den{
 			for(int i = 0; i < so_Luong_Den; i++){
 				cout << endl << "Ban co muon thay doi trang thai den " << i+1 << " khong (Y:Yes / N:No): ";
 				cin >> x;
-				if (x == 'Y') continue;
+				if (x == 'N') continue;
 				else {
 					cout << endl << "Nhap trang thai thay doi cua den so " << i+1 << " (ON/OFF):"; cin >> trang_Thai_Thay_Doi;
 					den[i].set_Trang_Thai(trang_Thai_Thay_Doi);
@@ -109,7 +109,7 @@ class Tu_dieu_khien: protected Den{
 		void xu_Ly_Trang_Thai_Den(){
 			for(int i = 0; i < so_Luong_Den; i++){
 				if(den[i].get_Trang_Thai() == "OFF"){
-					if(thoi_Tiet.get_Trang_Thai_Thoi_Tiet() == 1){
+					if(thoi_Tiet.get_Trang_Thai_Thoi_Tiet()){
 						den[i].set_Trang_Thai("ON");
 					}
 				}
@@ -166,6 +166,7 @@ class Tu_dieu_khien: protected Den{
 		void xuat_Thong_Tin_Den(){
 			for(int i = 0; i < so_Luong_Den; i++){
 				hoat_Dong(den[i]);
+				xu_Ly_Trang_Thai_Den();
 				den[i].set_Thoi_Gian_Cua_Den(den[i].thoi_Gian.get_Khoang_Thoi_Gian(dong_Ho));
 				den[i].thoi_Gian = dong_Ho;
 				den[i].xuat();
@@ -174,6 +175,7 @@ class Tu_dieu_khien: protected Den{
 		}
 		
 		void he_Thong_Dieu_Khien(){
+			nhap_Thong_Tin_Den();
 			while(true){
 				cout << "__________________________________________________";
 				cout << endl << "|                                                 |";
@@ -189,39 +191,38 @@ class Tu_dieu_khien: protected Den{
 				cout << endl << "|  (3): Nhap thong so kiem tra den                |";
 				cout << endl << "|-------------------------------------------------|";
 				cout << endl << "|                                                 |";
-				cout << endl << "|  (4): Xem nang luong tieu thu dien cua den      |";
+				cout << endl << "|  (4): Xem thong tin den                         |";
 				cout << endl << "|-------------------------------------------------|";
 				cout << endl << "|                                                 |";
-				cout << endl << "|  (5): Xem thong tin den                         |";
+				cout << endl << "|  (5): Xem nang luong tieu thu dien cua den      |";
 				cout << endl << "|-------------------------------------------------|";
 				cout << endl << "|                                                 |";
 				cout << endl << "|  (0): Thoat chuong trinh                        |";
 				cout << endl << "|_________________________________________________|";
 				
-				nhap_Thong_Tin_Den();
 				
 				int lua_Chon;
-				cout << endl << "Nhap lua chon cua ban(0 -> 4): "; cin >> lua_Chon;
+				cout << endl << "Nhap lua chon cua ban(0 -> 5): "; cin >> lua_Chon;
 				switch(lua_Chon){
 					case 1: 
 						dieu_Chinh_Cong_Suat(); 
-						cout << endl << "Nhap phim bat ky de tiep tuc."; getch();
+						cout << endl << "Nhap phim bat ky de tiep tuc."; getch(); cout << endl;
 						break;
 					case 2: 
 						dieu_Chinh_Trang_Thai();
-						cout << endl << "Nhap phim bat ky de tiep tuc."; getch();
+						cout << endl << "Nhap phim bat ky de tiep tuc."; getch(); cout << endl;
 						break;
 					case 3: 
 						nhap_Thong_So_Kiem_Tra();
-						cout << endl << "Nhap phim bat ky de tiep tuc."; getch();
+						cout << endl << "Nhap phim bat ky de tiep tuc."; getch(); cout << endl;
 						break;
 					case 4: 
 						tong_Tieu_Thu();
-						cout << endl << "Nhap phim bat ky de tiep tuc."; getch();
+						cout << endl << "Nhap phim bat ky de tiep tuc."; getch(); cout << endl;
 						break;
 					case 5: 
 						xuat_Thong_Tin_Den();
-						cout << endl << "Nhap phim bat ky de tiep tuc."; getch();
+						cout << endl << "Nhap phim bat ky de tiep tuc."; getch(); cout << endl;
 						break;
 					case 0: return; break;
 					default: 
