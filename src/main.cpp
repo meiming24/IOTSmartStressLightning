@@ -1,4 +1,6 @@
 #include<bits/stdc++.h>
+#include <windows.h>
+#include <conio.h>
 using namespace std;
 #include "Den.h"
 #include "Tu_dieu_khien.h"
@@ -27,23 +29,10 @@ int main(){
 	cout << endl << "           |                    Thanh vien     : Trung, Minh, Tam, Duy, Hoang                 |";
 	cout << endl << "           |                                                                                  |";
 	cout << endl << "           |          --------------------------------------------------------------          |";
-	cout << endl << "           |                     ________________________________________                     |";
-	cout << endl << "           |                                                                                  |";
-	cout << endl << "           |                                                                                  |";
-	cout << endl << "           |                                                                                  |";
-	cout << endl << "           |                                                                                  |";
-	cout << endl << "           |                           ----- THUC HIEN HE THONG -----                         |";
-	cout << endl << "           |                                                                                  |";
-	cout << endl << "           |                                   ...WELLCOME...                                 |"; 
-	cout << endl << "           |           Chao mung ban den voi he thong mo phong den duong thong minh!          |";
-	cout << endl << "           |                          - SMART STRESS LIGHTNING SYSTEM-                        |";
-	cout << endl << "           |                                                                                  |";
-	cout << endl << "           |                                                                                  |";
-	cout << endl << "           |           ----------------------------START------------------------------        |";
-	cout << endl << "           |                                                                                  |";
-	cout << endl << "                                                                                               ";
-	cout << endl << "                                                                                               ";
-	
+	cout << endl << "           |__________________________________________________________________________________|";
+	cout << endl << endl << endl << "\tNhan phim bat ki de tiep tuc !";
+	getch();
+	system("cls");
 	Tu_dieu_khien t1;
 	t1.he_Thong_Dieu_Khien();
 }

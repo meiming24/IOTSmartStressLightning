@@ -14,11 +14,11 @@ class Thoi_tiet{
 		}
 		
 		void nhap(){
-			cout<<endl <<"Nhiet do: "; 
+			cout<<endl<<"\t\tNhiet do: "; 
 			cin >> nhiet_Do;
-			cout<<endl<<"Do am: "; 
+			cout<<"\t\tDo am: "; 
 			cin >> do_Am;
-			cout<<endl<<"Toc do gio: "; 
+			cout<<"\t\tToc do gio: "; 
 			cin >> toc_Do_Gio;
 		}
 		
@@ -48,11 +48,11 @@ class Thoi_tiet{
 		
 		bool get_Trang_Thai_Thoi_Tiet(){
 			if (nhiet_Do<=20 && do_Am>=80 && toc_Do_Gio<=3) {
-				cout<<endl <<"Xuat hien suong mu, can bat den!"<<endl;
+				cout<<endl <<"\tXuat hien suong mu, can bat den!"<<endl; //can sua
 				trang_Thai = true;
 			}
 			else{
-				cout<<"Khong xuat hien suong mu, khong can bat den!"<<endl;
+				cout<<"\tKhong xuat hien suong mu, khong can bat den!"<<endl; //can sua
 				trang_Thai = false;
 			}
 			return trang_Thai; 

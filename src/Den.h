@@ -21,8 +21,8 @@ class Den {
 		
 		void nhap(){
 			fflush(stdin);
-			cout <<"\tTrang thai (ON/OFF): "; cin >> trang_Thai;
-			cout <<"\tCong suat: "; cin >> cong_Suat;
+			cout <<"\t\tTrang thai (ON/OFF): "; cin >> trang_Thai;
+			cout <<"\t\tCong suat: "; cin >> cong_Suat;
 		}
 		
 		void set_Trang_Thai(string trang_Thai_Moi) {
@@ -84,18 +84,19 @@ class Den {
 		void xuat(){
 			if(trang_Thai == "ON") {
 				cout << endl;
-				cout <<"Den dang bat"<< endl;
-				cout <<"Cong suat cua den la "<< get_Cong_Suat() <<" W"<< endl;
-				cout <<"Pham vi hien tai cua den la "<< get_Pham_Vi() <<" m^2"<< endl;
-				cout <<"Nang luong tieu thu cua den la "<< fixed << setprecision(2) << get_Nang_Luong_Tieu_Thu() <<" W"<< endl;
-				cout << "Nang luong mat troi cua den la: " << fixed << setprecision(2) << get_Nang_Luong_Mat_Troi() <<" W" << endl << endl;
+				cout <<"\t\tTrang thai: ON"<< endl;
+				cout <<"\t\tCong suat: "<< get_Cong_Suat() <<" W"<< endl;
+				cout <<"\t\tPham vi: "<< get_Pham_Vi() <<" m^2"<< endl;
+				cout <<"\t\tNang luong tieu thu: "<< fixed << setprecision(2) << get_Nang_Luong_Tieu_Thu() <<" W"<< endl;
+				cout <<"\t\tNang luong mat troi: " << fixed << setprecision(2) << get_Nang_Luong_Mat_Troi() <<" W" << endl;
 			}
 			else if(trang_Thai == "OFF"){
 				cout << endl;
-				cout <<"Den dang tat"<< endl;
-				cout << endl;
-				cout <<"Nang luong tieu thu cua den la "<< fixed << setprecision(2) << get_Nang_Luong_Tieu_Thu() <<" Wh"<< endl;
-				cout << "Nang luong mat troi cua den la: " << fixed << setprecision(2) << get_Nang_Luong_Mat_Troi() <<" W"<< endl << endl;
+				cout <<"\t\tTrang thai: OFF"<< endl;
+				cout <<"\t\tCong suat: "<< get_Cong_Suat() <<" W"<< endl;
+				cout <<"\t\tPham vi: 0 m^2"<< endl;
+				cout <<"\t\tNang luong tieu thu: "<< fixed << setprecision(2) << get_Nang_Luong_Tieu_Thu() <<" Wh"<< endl;
+				cout <<"\t\tNang luong mat troi: " << fixed << setprecision(2) << get_Nang_Luong_Mat_Troi() <<" W"<< endl;
 			} 
 		}
 };

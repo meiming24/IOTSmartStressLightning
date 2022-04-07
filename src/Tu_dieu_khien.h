@@ -2,13 +2,12 @@
 #define TUDIEUKHIEN_H
 #include "Den.h"
 #include "Thoi_tiet.h"
-//#include "Doi_tuong.h"
 #include <conio.h>
+#include <windows.h>
 
 class Tu_dieu_khien: protected Den{
 	protected:
 		Thoi_tiet thoi_Tiet;
-//		Doi_tuong doi_Tuong;
 		Thoi_gian dong_Ho;
 		int so_Luong_Den;   
 		int tong_Doi_Tuong;
@@ -23,16 +22,12 @@ class Tu_dieu_khien: protected Den{
 			tong_Doi_Tuong = 0;
 			string ten;
 			int so_Luong;
-			char tiep = 'c';
-			do{
-				cout << endl << "Ten doi tuong: "; 
-				fflush(stdin);
-				cin >> ten;
-				cout << endl << "So luong: "; 
-				cin >> so_Luong;
-				tong_Doi_Tuong += so_Luong;
-				cout << endl << "Ban muon nhap them doi tuong (YES: c): "; cin >> tiep;
-			} while (tiep == 'c');
+			cout << "\t\tTen doi tuong: "; 
+			fflush(stdin);
+			cin >> ten;
+			cout << "\t\tSo luong: "; 
+			cin >> so_Luong;
+			tong_Doi_Tuong += so_Luong;
 		}
 		
 		int get_Tong_Doi_Tuong(){
@@ -45,69 +40,78 @@ class Tu_dieu_khien: protected Den{
 		}
 		
 		void nhap_Thong_Tin_Den(){
-			cout << endl << "Nhap so luong den thuc hien yeu cau cua ban: "; 
+			cout << endl << "\tNhap so luong den thuc hien yeu cau cua ban: "; 
 			cin >> so_Luong_Den;
-			cout << endl << "Nhap thong tin tung den: ";
+			cout << endl << "\tNhap thong tin tung den: ";
 			cout << endl;
 			for(int i = 0; i < so_Luong_Den; i++){
-				cout << "Den[" << i + 1 <<"]: " << endl;
+				cout << "\tDen[" << i + 1 <<"]: " << endl;
 				den[i].nhap();
 			}
 		}
 		
 		void dieu_Chinh_Cong_Suat(){
+			for(int i = 0; i < so_Luong_Den; i++){
+				cout << endl << "\tCong suat hien tai cua Den[" << i+1 << "] :" << den[i].get_Cong_Suat() << " W";
+			}
+			cout << endl;
 			int cong_Suat_Thay_Doi;
 			char c;
 			for(int i = 0; i < so_Luong_Den; i++){
-				cout << endl << "Ban co muon thay doi cong suat Den[" << i+1 <<"] khong (Y: Yes/N: No): ";
+				cout << endl << "\tBan co muon thay doi cong suat Den[" << i+1 <<"] khong (Y: Yes/N: No): ";
 				cin >> c;
 				if(c == 'N') continue;
 				else {
 					do{					
-						cout << endl << "\tCong suat moi cua Den[" << i+1 << "]: "; 
+						cout << endl << "\t\tCong suat moi cua Den[" << i+1 << "]: "; 
 						cin >> cong_Suat_Thay_Doi;
 						cout << endl;
 						if(cong_Suat_Thay_Doi < 0){
-							cout << endl << "\tCong suat khong the am !!!";
+							cout << endl << "\t\tCong suat khong the am !!!";
 						}
 					} while(cong_Suat_Thay_Doi < 0);
 					den[i].set_Cong_Suat(cong_Suat_Thay_Doi);
 				}
 			}
-			cout << endl << "Sau khi dieu chinh cong suat cua " << so_Luong_Den << " den, thi cong suat tung den la: " << endl;
+			cout << endl << "\tSau khi dieu chinh cong suat cua " << so_Luong_Den << " den, thi cong suat tung den la: " << endl;
 			for(int i = 0; i < so_Luong_Den; i++){
-				cout << endl << "\tDen[" << i+1 << "]: " << den[i].get_Cong_Suat();
+				cout << endl << "\t\tDen[" << i+1 << "]: " << den[i].get_Cong_Suat() << " W";
 			}
 		}
 		
 		void dieu_Chinh_Trang_Thai(){
+			for(int i = 0; i < so_Luong_Den; i++){
+				cout << endl << "\tTrang thai hien tai cua Den[" << i+1 << "] :" << den[i].get_Trang_Thai();
+			}
+			cout << endl;
 			string trang_Thai_Thay_Doi;
 			char x;
 			for(int i = 0; i < so_Luong_Den; i++){
-				cout << endl << "Ban co muon thay doi trang thai Den[" << i+1 << "] khong (Y:Yes / N:No): ";
+				cout << endl << "\tBan co muon thay doi trang thai Den[" << i+1 << "] khong (Y:Yes / N:No): ";
 				cin >> x;
 				if (x == 'N') continue;
 				else {
-					cout << endl << "\tTrang thai moi cua Den[" << i+1 << "] (ON/OFF):"; 
+					cout << endl << "\t\tTrang thai moi cua Den[" << i+1 << "] (ON/OFF):"; 
 					cin >> trang_Thai_Thay_Doi;
 					cout << endl;
 					den[i].set_Trang_Thai(trang_Thai_Thay_Doi);
 				}
 			}
-			cout << endl << "Trang thai cua tung den sau khi thay doi la: " << endl;
+			cout << endl << "\tTrang thai cua tung den sau khi thay doi la: " << endl;
 			for(int i = 0; i < so_Luong_Den; i++){
-				cout << endl << "\tDen[" << i << "]: " << den[i].get_Trang_Thai();
+				cout << endl << "\t\tDen[" << i+1 << "]: " << den[i].get_Trang_Thai();
 			}
 		}
 		
 		void nhap_Thong_So_Kiem_Tra(){
-			cout << endl << "Nhap vao thoi gian ban muon kiem tra he thong den !!!" << endl;
+			cout << endl << "\tCac thong so can nhap: Thoi gian, Thoi tiet, Doi tuong." << endl;
+			cout << endl << "\t*Thoi gian: " << endl;
 			dong_Ho.nhap_Thoi_Gian();
-			cout << endl << "Nhap cac chi so thoi tiet hien tai !!!"; 
+			cout << endl << "\t*Thoi tiet:"; 
 			thoi_Tiet.nhap();
-			cout << endl << "Nhap doi tuong !!!";
+			cout << endl << "\t*Doi tuong:" << endl;
 			nhap_Doi_Tuong();
-			cout << endl << "Vay tong so doi tuong la: " << get_Tong_Doi_Tuong();
+			cout << endl << endl << "\tHe thong da nhan cac thong so kiem tra !...";
 		}
 		
 		void xu_Ly_Trang_Thai_Den(){
@@ -118,17 +122,19 @@ class Tu_dieu_khien: protected Den{
 					}
 				}
 				if(den[i].get_Trang_Thai() == "ON"){
-					cout << endl << "Den " << i+1 << " se co cong suat moi la: " << den[i].get_Cong_Suat() + get_Tong_Doi_Tuong() << "W, va se tro lai binh thuong sau khi doi tuong di qua !";
+					cout << endl << "\tDen " << i+1 << " se co cong suat moi la: " << den[i].get_Cong_Suat() + get_Tong_Doi_Tuong() << "W, va se tro lai binh thuong sau khi doi tuong di qua !";
 				}
 			}
 		}
 		
 		void tong_Tieu_Thu(){
+			tong_Tieu_Thu_Nang_Luong = 0;
 			for(int i = 0; i < so_Luong_Den; i++){
-				cout << endl << "Luong tieu thu nang luong cua den " << i+1 << " :" << den[i].get_Nang_Luong_Tieu_Thu();
+				hoat_Dong(den[i]);
+				cout << endl << "\tLuong tieu thu nang luong cua Den [" << i+1 << "]: " << den[i].get_Nang_Luong_Tieu_Thu();
 				tong_Tieu_Thu_Nang_Luong += den[i].get_Nang_Luong_Tieu_Thu();
 			}
-			cout << endl << "Tong luong tieu thu nang luong cua " << so_Luong_Den << " den la: " << tong_Tieu_Thu_Nang_Luong;
+			cout << endl << "\tTong luong tieu thu nang luong cua " << so_Luong_Den << " den la: " << tong_Tieu_Thu_Nang_Luong;
 		}
 		
 		void hoat_Dong(Den &den){
@@ -168,65 +174,82 @@ class Tu_dieu_khien: protected Den{
 		}
 		
 		void xuat_Thong_Tin_Den(){
+			cout << endl << "\tThong tin cac den: " << endl;
 			for(int i = 0; i < so_Luong_Den; i++){
 				hoat_Dong(den[i]);
-				xu_Ly_Trang_Thai_Den();
+//				xu_Ly_Trang_Thai_Den();
 				den[i].set_Thoi_Gian_Cua_Den(den[i].thoi_Gian.get_Khoang_Thoi_Gian(dong_Ho));
 				den[i].thoi_Gian = dong_Ho;
+				cout << endl << endl << "\t* Den [" << i+1 <<"] : " << endl;
 				den[i].xuat();
+				cout << "\t\tDong ho: ";
 				den[i].thoi_Gian.in_Thoi_Gian();
 			}
 		}
 		
 		void he_Thong_Dieu_Khien(){
-//			nhap_Thong_Tin_Den();
+			cout << endl << "                                      ----- THUC HIEN HE THONG -----                         ";
+			cout << endl << "                      ______________________________________________________________         ";
+			cout << endl << endl;
+			nhap_Thong_Tin_Den();
+			cout << endl << "Nhan phim bat ky de bat dau he thong !";
+			getch();
+			system("cls");
+			cout << endl << "                                                                                             ";
+			cout << endl << "                                              ...WELLCOME...                                 "; 
+			cout << endl << "                      Chao mung ban den voi he thong mo phong den duong thong minh!          ";
+			cout << endl << "                                     - SMART STRESS LIGHTNING SYSTEM-                        ";
+			cout << endl << "                                                                                             ";
+			cout << endl << "                                                                                             ";
+			cout << endl << "                      ----------------------------START------------------------------        ";
 			while(true){
-				cout << endl << endl;
-				cout << endl << "                              _________________________________________________";
-				cout << endl << "                             |                                                 |";
-				cout << endl << "                             |              HE THONG DIEU KHIEN                |";
-				cout << endl << "                             |_________________________________________________|";
-				cout << endl << "                             |                                                 |";
-				cout << endl << "                             |  (1): Dieu chinh cong suat den                  |";
-				cout << endl << "                             |-------------------------------------------------|";
-				cout << endl << "                             |                                                 |";
-				cout << endl << "                             |  (2): Dieu chinh trang thai den(ON/OFF)         |";
-				cout << endl << "                             |-------------------------------------------------|";
-				cout << endl << "                             |                                                 |";
-				cout << endl << "                             |  (3): Nhap thong so kiem tra den                |";
-				cout << endl << "                             |-------------------------------------------------|";
-				cout << endl << "                             |                                                 |";
-				cout << endl << "                             |  (4): Xem thong tin den                         |";
-				cout << endl << "                             |-------------------------------------------------|";
-				cout << endl << "                             |                                                 |";
-				cout << endl << "                             |  (5): Xem nang luong tieu thu dien cua den      |";
-				cout << endl << "                             |-------------------------------------------------|";
-				cout << endl << "                             |                                                 |";
-				cout << endl << "                             |  (0): Thoat chuong trinh                        |";
-				cout << endl << "                             |_________________________________________________|";
+				cout << endl;
+				cout << endl << "                            _________________________________________________";
+				cout << endl << "                           |                                                 |";
+				cout << endl << "                           |              HE THONG DIEU KHIEN                |";
+				cout << endl << "                           |_________________________________________________|";
+				cout << endl << "                           |                                                 |";
+				cout << endl << "                           |  (1): Dieu chinh cong suat den                  |";
+				cout << endl << "                           |-------------------------------------------------|";
+				cout << endl << "                           |                                                 |";
+				cout << endl << "                           |  (2): Dieu chinh trang thai den(ON/OFF)         |";
+				cout << endl << "                           |-------------------------------------------------|";
+				cout << endl << "                           |                                                 |";
+				cout << endl << "                           |  (3): Nhap thong so kiem tra den                |";
+				cout << endl << "                           |-------------------------------------------------|";
+				cout << endl << "                           |                                                 |";
+				cout << endl << "                           |  (4): Xem thong tin den                         |";
+				cout << endl << "                           |-------------------------------------------------|";
+				cout << endl << "                           |                                                 |";
+				cout << endl << "                           |  (5): Xem nang luong tieu thu dien cua den      |";
+				cout << endl << "                           |-------------------------------------------------|";
+				cout << endl << "                           |                                                 |";
+				cout << endl << "                           |  (0): Thoat chuong trinh                        |";
+				cout << endl << "                           |_________________________________________________|";
 				
 				int lua_Chon;
-				cout << endl << endl << "Nhap lua chon cua ban(0 -> 5): "; cin >> lua_Chon;
+				cout << endl << endl << "\tNhap lua chon cua ban(0 -> 5): "; cin >> lua_Chon;
+				system("cls");
 				switch(lua_Chon){
 					case 1: 
 						dieu_Chinh_Cong_Suat(); 
-						cout << endl << "Nhap phim bat ky de tiep tuc."; getch(); cout << endl;
+						cout << endl << endl << "Nhan phim bat ky de tiep tuc."; getch(); system("cls");
 						break;
 					case 2: 
 						dieu_Chinh_Trang_Thai();
-						cout << endl << "Nhap phim bat ky de tiep tuc."; getch(); cout << endl;
+						cout << endl << endl << "Nhan phim bat ky de tiep tuc."; getch(); system("cls");
 						break;
 					case 3: 
 						nhap_Thong_So_Kiem_Tra();
-						cout << endl << "Nhap phim bat ky de tiep tuc."; getch(); cout << endl;
+						cout << endl << endl << "Nhan phim bat ky de tiep tuc."; getch(); system("cls");
 						break;
 					case 4: 
 						tong_Tieu_Thu();
-						cout << endl << "Nhap phim bat ky de tiep tuc."; getch(); cout << endl;
+						cout << endl << endl << "Nhan phim bat ky de tiep tuc."; getch(); system("cls");
 						break;
 					case 5: 
 						xuat_Thong_Tin_Den();
-						cout << endl << "Nhap phim bat ky de tiep tuc."; getch(); cout << endl;
+						cout << endl << endl << "Nhan phim bat ky de tiep tuc."; getch(); system("cls");
 						break;
 					case 0:
 						cout << endl << endl;
@@ -235,8 +258,8 @@ class Tu_dieu_khien: protected Den{
 						cout << endl << "            __________________________________________________________________________________";
 						return; break;
 					default: 
-						cout << endl << "Khong co chuc nang nay!";
-						cout << endl << "Nhap phim bat ky de tiep tuc."; getch();
+						cout << endl << "\tKhong co chuc nang nay!";
+						cout << endl << "\tNhan phim bat ky de quay lai he thong."; getch(); system("cls");
 				}
 			}
 		}
