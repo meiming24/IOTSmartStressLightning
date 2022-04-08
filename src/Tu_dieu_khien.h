@@ -4,6 +4,7 @@
 #include "Thoi_tiet.h"
 #include <conio.h>
 #include <windows.h>
+#include <iomanip>
 
 class Tu_dieu_khien: protected Den{
 	protected:
@@ -174,17 +175,23 @@ class Tu_dieu_khien: protected Den{
 		}
 		
 		void xuat_Thong_Tin_Den(){
-			cout << endl << "\tThong tin cac den: " << endl;
+			cout << endl;
+			cout << "                                               ---- BANG THONG TIN DEN ----" << endl;
+			cout << "                _________________________________________________________________________________________________" << endl;
+			cout << "               |  Den[i]  |  Trang thai  |  Cong suat  |  Pham vi  |  NN mat troi  |  NN tieu thu  |   Dong ho   |" << endl;
+			cout << "               |==========|==============|=============|===========|===============|===============|=============|" << endl;
 			for(int i = 0; i < so_Luong_Den; i++){
 				hoat_Dong(den[i]);
 //				xu_Ly_Trang_Thai_Den();
 				den[i].set_Thoi_Gian_Cua_Den(den[i].thoi_Gian.get_Khoang_Thoi_Gian(dong_Ho));
 				den[i].thoi_Gian = dong_Ho;
-				cout << endl << endl << "\t* Den [" << i+1 <<"] : " << endl;
-				den[i].xuat();
-				cout << "\t\tDong ho: ";
+				cout << "               |" << setw(5) << i+1 << "     |" << setw(8) << den[i].get_Trang_Thai() << "      |" << setw(8) << den[i].get_Cong_Suat() << "     |" << setw(8) << den[i].get_Pham_Vi();
+				cout << "   |" << setw(11) << den[i].get_Nang_Luong_Mat_Troi() << "    |" << setw(11) << den[i].get_Nang_Luong_Tieu_Thu() << "    |  "; 
 				den[i].thoi_Gian.in_Thoi_Gian();
+				cout << "   |" << endl;
+			cout << "               |----------|--------------|-------------|-----------|---------------|---------------|-------------|" << endl;
 			}
+			cout << "               ===================================================================================================" << endl;
 		}
 		
 		void he_Thong_Dieu_Khien(){
@@ -256,6 +263,7 @@ class Tu_dieu_khien: protected Den{
 						cout << endl << "                                         ----- KET THUC HE THONG -----                         ";
 						cout << endl << "                       ------------------------------END------------------------------         ";
 						cout << endl << "            __________________________________________________________________________________";
+						cout << endl << endl;
 						return; break;
 					default: 
 						cout << endl << "\tKhong co chuc nang nay!";
