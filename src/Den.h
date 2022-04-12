@@ -28,13 +28,6 @@ class Den {
 			cout <<"\t\tTrang thai (ON/OFF): "; cin >> trang_Thai;
 			cout <<"\t\tCong suat: "; cin >> cong_Suat;
 		}
-//		void set_Cong_Suat_Nho(float x){
-//			cong_Suat_Nho = x;
-//		}
-//		
-//		float get_Cong_Suat_Nho(){
-//			return cong_Suat_Nho;
-//		}
 		
 		void set_Trang_Thai(string trang_Thai_Moi) {
 			trang_Thai = trang_Thai_Moi;
