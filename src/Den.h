@@ -7,7 +7,7 @@ class Den {
 		Thoi_gian thoi_Gian;
 		float nang_Luong_Tieu_Thu, nang_Luong_Mat_Troi;
 		bool key;
-		float cong_Suat_Nho;
+//		float cong_Suat_Nho;
 	protected: 
 		string trang_Thai;
 		float cong_Suat, pham_Vi;
@@ -17,7 +17,6 @@ class Den {
 			key = true;
 			trang_Thai = "OFF";
 			cong_Suat = 150;
-			cong_Suat_Nho = 150;
 			pham_Vi = cong_Suat * 0.75;
 			nang_Luong_Tieu_Thu = 0;
 			nang_Luong_Mat_Troi = 0;
@@ -29,13 +28,13 @@ class Den {
 			cout <<"\t\tTrang thai (ON/OFF): "; cin >> trang_Thai;
 			cout <<"\t\tCong suat: "; cin >> cong_Suat;
 		}
-		void set_Cong_Suat_Nho(){
-			cong_Suat_Nho = cong_Suat;
-		}
-		
-		float get_Cong_Suat_Nho(){
-			return cong_Suat_Nho;
-		}
+//		void set_Cong_Suat_Nho(float x){
+//			cong_Suat_Nho = x;
+//		}
+//		
+//		float get_Cong_Suat_Nho(){
+//			return cong_Suat_Nho;
+//		}
 		
 		void set_Trang_Thai(string trang_Thai_Moi) {
 			trang_Thai = trang_Thai_Moi;
