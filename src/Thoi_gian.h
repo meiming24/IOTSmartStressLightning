@@ -52,7 +52,7 @@ class Thoi_gian {
 			if((giay < 0 || phut < 0 || gio < 0) || (giay > 60 || gio > 60 || gio >= 24)) {
 				chuan_Hoa_Thoi_Gian();
 			}
-			if(gio >= 0 && gio <= 10) cout << "0" << gio << ":";
+			if(gio >= 0 && gio < 10) cout << "0" << gio << ":";
 			else cout << gio << ":";
 			if(phut >= 0 && phut <= 10) cout << "0" << phut << ":";
 			else cout << phut << ":";
