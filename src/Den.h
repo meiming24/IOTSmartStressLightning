@@ -7,7 +7,6 @@ class Den {
 		Thoi_gian thoi_Gian;
 		float nang_Luong_Tieu_Thu, nang_Luong_Mat_Troi;
 		bool key;
-//		float cong_Suat_Nho;
 	protected: 
 		string trang_Thai;
 		float cong_Suat, pham_Vi;
