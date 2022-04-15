@@ -68,31 +68,31 @@ class Den {
 		
 		float get_Nang_Luong_Tieu_Thu() {
 			
-			if(key == true) {
-				if(thoi_Gian.get_Gio() > 5 && thoi_Gian.get_Gio() < 19){
-					thoi_Gian_Cua_Den -= 5 * 60 * 60;
-					nang_Luong_Mat_Troi = cong_Suat * thoi_Gian_Cua_Den * 0.75;
-					nang_Luong_Tieu_Thu = cong_Suat * 5 * 60 * 60;
-				} 
-				else if(thoi_Gian.get_Gio()  >= 18){
-					thoi_Gian_Cua_Den -= 13 * 60 * 60;
-					nang_Luong_Mat_Troi = cong_Suat * 13 * 0.75 * 60 * 60;
-					nang_Luong_Tieu_Thu = cong_Suat * thoi_Gian_Cua_Den;
-				}
-				else {
-					nang_Luong_Tieu_Thu = cong_Suat * thoi_Gian_Cua_Den;
-					nang_Luong_Mat_Troi = 0;
-				}
-			
-				if(nang_Luong_Mat_Troi < nang_Luong_Tieu_Thu){
-						set_Nang_Luong_Tieu_Thu(nang_Luong_Tieu_Thu - nang_Luong_Mat_Troi);
-						set_Nang_Luong_Mat_Troi(0.0);
-				}
-				else {
-					set_Nang_Luong_Mat_Troi( nang_Luong_Mat_Troi - nang_Luong_Tieu_Thu);
-					set_Nang_Luong_Tieu_Thu(0.0);
-				}
-			}
+//			if(key == true) {
+//				if(thoi_Gian.get_Gio() > 5 && thoi_Gian.get_Gio() < 19){
+//					thoi_Gian_Cua_Den -= 5 * 60 * 60;
+//					nang_Luong_Mat_Troi = cong_Suat * thoi_Gian_Cua_Den * 0.75;
+//					nang_Luong_Tieu_Thu = cong_Suat * 5 * 60 * 60;
+//				} 
+//				else if(thoi_Gian.get_Gio()  >= 18){
+//					thoi_Gian_Cua_Den -= 13 * 60 * 60;
+//					nang_Luong_Mat_Troi = cong_Suat * 13 * 0.75 * 60 * 60;
+//					nang_Luong_Tieu_Thu = cong_Suat * thoi_Gian_Cua_Den;
+//				}
+//				else {
+//					nang_Luong_Tieu_Thu = cong_Suat * thoi_Gian_Cua_Den;
+//					nang_Luong_Mat_Troi = 0;
+//				}
+//			
+//				if(nang_Luong_Mat_Troi < nang_Luong_Tieu_Thu){
+//						set_Nang_Luong_Tieu_Thu(nang_Luong_Tieu_Thu - nang_Luong_Mat_Troi);
+//						set_Nang_Luong_Mat_Troi(0.0);
+//				}
+//				else {
+//					set_Nang_Luong_Mat_Troi( nang_Luong_Mat_Troi - nang_Luong_Tieu_Thu);
+//					set_Nang_Luong_Tieu_Thu(0.0);
+//				}
+//			}
 			
 			return nang_Luong_Tieu_Thu;
 		}
