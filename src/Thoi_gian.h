@@ -54,9 +54,9 @@ class Thoi_gian {
 			}
 			if(gio >= 0 && gio < 10) cout << "0" << gio << ":";
 			else cout << gio << ":";
-			if(phut >= 0 && phut <= 10) cout << "0" << phut << ":";
+			if(phut >= 0 && phut < 10) cout << "0" << phut << ":";
 			else cout << phut << ":";
-			if(giay >= 0 && giay <= 10) cout << "0" << giay;
+			if(giay >= 0 && giay < 10) cout << "0" << giay;
 			else cout << giay;
 		}
 		

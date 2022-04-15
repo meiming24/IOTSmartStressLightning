@@ -35,11 +35,6 @@ class Tu_dieu_khien: protected Den{
 			return tong_Doi_Tuong;
 		}
 		
-		void che_Do_Tu_Dong(){
-			nhap_Thong_So_Kiem_Tra();
-			xu_Ly_Trang_Thai_Den();
-		}
-		
 		void nhap_Thong_Tin_Den(){
 			cout << endl << "\tNhap so luong den thuc hien yeu cau cua ban: "; 
 			cin >> so_Luong_Den;
@@ -153,13 +148,12 @@ class Tu_dieu_khien: protected Den{
 			}	
 			cout << endl << "          !===================================!" << endl << endl;
 			
-			xu_Ly_Trang_Thai_Den();
+			xu_Ly_Den();
 			cout << endl << "\tCu the: " << endl;
 			for(int i = 0; i < so_Luong_Den; i++){
 				float x;
 				x = den[i].get_Cong_Suat() + get_Tong_Doi_Tuong();
-				if(x > 400) x = 400;
-
+				if(x >= 400) x = 400;
 				cout << endl << "\t*Den[" << i+1 << "]:";
 				cout << endl << "\t\tTrang thai: " << den[i].get_Trang_Thai();				
 				cout << endl << "\t\tCong suat: " << x;
@@ -169,8 +163,8 @@ class Tu_dieu_khien: protected Den{
 			cout << endl << endl << endl << endl << "------------------------------------------------------";
 			cout << endl << "\t- Ghi chu -";
 			cout << endl << endl << "\t*Thoi gian:";
-			cout << endl << "\t\t5h -> 19h (cung ngay) : Ban ngay.";
-			cout << endl << "\t\t19h -> 5h (hom sau) : Ban dem.";
+			cout << endl << "\t\t6h -> 19h (cung ngay) : Ban ngay.";
+			cout << endl << "\t\t19h -> 6h (hom sau) : Ban dem.";
 			cout << endl << endl << "\t*Thoi tiet:";
 			cout << endl << "\t\tX : Xuat hien suong mu, gay can tro tam nhin, he thong se tu dong bat den !";
 			cout << endl << "\t\tO : Thoi tiet o trang thai binh thuong.";
@@ -180,17 +174,117 @@ class Tu_dieu_khien: protected Den{
 			tong_Tieu_Thu();
 		}
 		
-		void xu_Ly_Trang_Thai_Den(){
+		void xu_Ly_Den(){
 			for(int i = 0; i < so_Luong_Den; i++){
 				hoat_Dong(den[i]);
 				den[i].set_Thoi_Gian_Cua_Den(den[i].thoi_Gian.get_Khoang_Thoi_Gian(dong_Ho));
-				den[i].thoi_Gian = dong_Ho;
 				
 				if(den[i].get_Trang_Thai() == "OFF"){
 					if(thoi_Tiet.get_Trang_Thai_Thoi_Tiet()){
 						den[i].set_Trang_Thai("ON");
 					}
 				}
+				
+				float thoi_Gian_Bat_Dau = (float)den[i].thoi_Gian.get_Gio() + (float)den[i].thoi_Gian.get_Phut() / 60 + (float)den[i].thoi_Gian.get_Giay() / 3600;
+				float thoi_Gian_Ket_Thuc = (float)dong_Ho.get_Gio() + (float)dong_Ho.get_Phut() / 60 + (float)dong_Ho.get_Giay() / 3600;
+				if(thoi_Gian_Bat_Dau >= 0 && thoi_Gian_Bat_Dau < 6){
+					float x, y, z;
+					x = 6 - thoi_Gian_Bat_Dau;
+					
+					if(thoi_Gian_Ket_Thuc >= 6 && thoi_Gian_Ket_Thuc <= 18){
+						y = 0;
+						z = thoi_Gian_Ket_Thuc - 5;
+					}
+					else if(thoi_Gian_Ket_Thuc > 18 && thoi_Gian_Ket_Thuc < 24){
+						y = thoi_Gian_Ket_Thuc - 18;
+						z = 14;
+					}
+					else if(thoi_Gian_Ket_Thuc > 0){
+						if(thoi_Gian_Ket_Thuc <= thoi_Gian_Bat_Dau){
+							y = thoi_Gian_Ket_Thuc;
+							z = 14;
+						}
+						else{
+							x = 0;
+							y = thoi_Gian_Ket_Thuc - thoi_Gian_Bat_Dau;
+							z = 0;
+						}
+					}
+					if(den[i].get_Cong_Suat() + get_Tong_Doi_Tuong() >= 400){
+						den[i].set_Nang_Luong_Tieu_Thu((x + y) * 400);
+						den[i].set_Nang_Luong_Mat_Troi(z * 400);
+					}
+					else{
+						den[i].set_Nang_Luong_Tieu_Thu((x + y) * (den[i].get_Cong_Suat() + get_Tong_Doi_Tuong()));
+						den[i].set_Nang_Luong_Mat_Troi(z * 0.75 * (den[i].get_Cong_Suat() + get_Tong_Doi_Tuong()));
+					} 
+				}
+				else if(thoi_Gian_Bat_Dau >= 6 &&  thoi_Gian_Bat_Dau <= 18){
+					float x, y, z;
+					x = 0;
+					
+					if(thoi_Gian_Ket_Thuc >= 6 && thoi_Gian_Ket_Thuc <= 18){
+						y = 0;
+						if(thoi_Gian_Bat_Dau > thoi_Gian_Ket_Thuc){
+							z = (19 - thoi_Gian_Bat_Dau) + (thoi_Gian_Ket_Thuc - 5);
+						}
+						else{
+							z = thoi_Gian_Ket_Thuc - thoi_Gian_Bat_Dau;
+						}
+					}
+					else if(thoi_Gian_Ket_Thuc > 18 && thoi_Gian_Ket_Thuc < 24){
+						y = thoi_Gian_Ket_Thuc - 18;
+						z = 19 - thoi_Gian_Bat_Dau;
+						
+					}
+					else if(thoi_Gian_Ket_Thuc > 0){
+						y = thoi_Gian_Ket_Thuc;
+						z = 19 - thoi_Gian_Bat_Dau;
+					}
+					
+					if(den[i].get_Cong_Suat() + get_Tong_Doi_Tuong() >= 400){
+						den[i].set_Nang_Luong_Tieu_Thu((x + y) * 400);
+						den[i].set_Nang_Luong_Mat_Troi(z * 400);
+					}
+					else{
+						den[i].set_Nang_Luong_Tieu_Thu((x + y) * (den[i].get_Cong_Suat() + get_Tong_Doi_Tuong()));
+						den[i].set_Nang_Luong_Mat_Troi(z * 0.75 * (den[i].get_Cong_Suat() + get_Tong_Doi_Tuong()));
+					} 
+				}
+				else if(thoi_Gian_Bat_Dau > 18 &&  thoi_Gian_Bat_Dau < 24){
+					float x, y, z;
+					x = 24 - thoi_Gian_Bat_Dau;
+					
+					if(thoi_Gian_Ket_Thuc >= 6 && thoi_Gian_Ket_Thuc <= 18){
+						y = 0;
+						z = thoi_Gian_Ket_Thuc - 5;
+					}
+					else if(thoi_Gian_Ket_Thuc > 18 && thoi_Gian_Ket_Thuc < 24){
+						if(thoi_Gian_Ket_Thuc >= thoi_Gian_Bat_Dau){
+							x = 0;
+							y = thoi_Gian_Ket_Thuc - thoi_Gian_Bat_Dau;
+							z = 0;
+						}
+						else{
+							y = thoi_Gian_Ket_Thuc - 18;
+							z = 14;
+						}
+					}
+					else if(thoi_Gian_Ket_Thuc > 0){
+						y = thoi_Gian_Ket_Thuc;
+						z = 0;
+					}
+					
+					if(den[i].get_Cong_Suat() + get_Tong_Doi_Tuong() >= 400){
+						den[i].set_Nang_Luong_Tieu_Thu((x + y) * 400);
+						den[i].set_Nang_Luong_Mat_Troi(z * 400);
+					}
+					else{
+						den[i].set_Nang_Luong_Tieu_Thu((x + y) * (den[i].get_Cong_Suat() + get_Tong_Doi_Tuong()));
+						den[i].set_Nang_Luong_Mat_Troi(z * 0.75 * (den[i].get_Cong_Suat() + get_Tong_Doi_Tuong()));
+					} 
+				}
+				den[i].thoi_Gian = dong_Ho;
 			}
 		}
 		
@@ -278,10 +372,10 @@ class Tu_dieu_khien: protected Den{
 				cout << endl << "                           |  (3): Nhap thong so kiem tra den                |";
 				cout << endl << "                           |-------------------------------------------------|";
 				cout << endl << "                           |                                                 |";
-				cout << endl << "                           |  (4): Xem thong tin den                         |";
+				cout << endl << "                           |  (4): Xem nang luong tieu thu dien cua den      |";
 				cout << endl << "                           |-------------------------------------------------|";
 				cout << endl << "                           |                                                 |";
-				cout << endl << "                           |  (5): Xem nang luong tieu thu dien cua den      |";
+				cout << endl << "                           |  (5): Xem thong tin den                         |";
 				cout << endl << "                           |-------------------------------------------------|";
 				cout << endl << "                           |                                                 |";
 				cout << endl << "                           |  (0): Thoat chuong trinh                        |";
