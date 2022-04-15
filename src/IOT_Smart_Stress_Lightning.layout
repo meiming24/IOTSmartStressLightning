@@ -3,9 +3,9 @@
 Order=3,2,0,4,1
 Focused=4
 [Editor_0]
-CursorCol=55
-CursorRow=55
-TopLine=1
+CursorCol=51
+CursorRow=59
+TopLine=16
 LeftChar=1
 [Editor_1]
 CursorCol=1
@@ -13,12 +13,13 @@ CursorRow=8
 TopLine=1
 LeftChar=1
 [Editor_2]
-CursorCol=12
-CursorRow=9
-TopLine=96
+CursorCol=35
+CursorRow=81
+TopLine=66
 =======
 Order=4,2,3,0,5,1
 Focused=5
+LeftChar=1
 [Editor_0]
 CursorCol=4
 CursorRow=69
@@ -38,13 +39,13 @@ LeftChar=1
 [Editor_3]
 CursorCol=35
 CursorRow=49
-TopLine=1
+TopLine=22
 LeftChar=1
 [Editor_4]
 <<<<<<< HEAD
-CursorCol=4
-CursorRow=20
-TopLine=1
+CursorCol=63
+CursorRow=402
+TopLine=361
 =======
 CursorCol=38
 CursorRow=42
