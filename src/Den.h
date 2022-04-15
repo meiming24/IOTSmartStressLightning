@@ -6,14 +6,12 @@ class Den {
 	public:
 		Thoi_gian thoi_Gian;
 		float nang_Luong_Tieu_Thu, nang_Luong_Mat_Troi;
-		bool key;
 	protected: 
 		string trang_Thai;
 		float cong_Suat, pham_Vi;
 		int thoi_Gian_Cua_Den;
 	public:
 		Den(){
-			key = true;
 			trang_Thai = "OFF";
 			cong_Suat = 150;
 			pham_Vi = cong_Suat * 0.75;
@@ -71,36 +69,6 @@ class Den {
 		}
 		
 		float get_Nang_Luong_Tieu_Thu() {
-<<<<<<< HEAD
-=======
-			
-//			if(key == true) {
-//				if(thoi_Gian.get_Gio() > 5 && thoi_Gian.get_Gio() < 19){
-//					thoi_Gian_Cua_Den -= 5 * 60 * 60;
-//					nang_Luong_Mat_Troi = cong_Suat * thoi_Gian_Cua_Den * 0.75;
-//					nang_Luong_Tieu_Thu = cong_Suat * 5 * 60 * 60;
-//				} 
-//				else if(thoi_Gian.get_Gio()  >= 18){
-//					thoi_Gian_Cua_Den -= 13 * 60 * 60;
-//					nang_Luong_Mat_Troi = cong_Suat * 13 * 0.75 * 60 * 60;
-//					nang_Luong_Tieu_Thu = cong_Suat * thoi_Gian_Cua_Den;
-//				}
-//				else {
-//					nang_Luong_Tieu_Thu = cong_Suat * thoi_Gian_Cua_Den;
-//					nang_Luong_Mat_Troi = 0;
-//				}
-//			
-//				if(nang_Luong_Mat_Troi < nang_Luong_Tieu_Thu){
-//						set_Nang_Luong_Tieu_Thu(nang_Luong_Tieu_Thu - nang_Luong_Mat_Troi);
-//						set_Nang_Luong_Mat_Troi(0.0);
-//				}
-//				else {
-//					set_Nang_Luong_Mat_Troi( nang_Luong_Mat_Troi - nang_Luong_Tieu_Thu);
-//					set_Nang_Luong_Tieu_Thu(0.0);
-//				}
-//			}
-			
->>>>>>> a1e3b176c07785a209c011e6d25b55680a44966d
 			return nang_Luong_Tieu_Thu;
 		}
 		
@@ -118,8 +86,8 @@ class Den {
 				cout <<"\t\tTrang thai: ON"<< endl;
 				cout <<"\t\tCong suat: "<< get_Cong_Suat() <<" W"<< endl;
 				cout <<"\t\tPham vi: "<< get_Pham_Vi() <<" m^2"<< endl;
-				cout <<"\t\tNang luong tieu thu: "<< fixed << setprecision(2) << get_Nang_Luong_Tieu_Thu() <<" W"<< endl;
-				cout <<"\t\tNang luong mat troi: " << fixed << setprecision(2) << get_Nang_Luong_Mat_Troi() <<" W" << endl;
+				cout <<"\t\tNang luong tieu thu: "<< fixed << setprecision(2) << get_Nang_Luong_Tieu_Thu() <<" Wh"<< endl;
+				cout <<"\t\tNang luong mat troi: " << fixed << setprecision(2) << get_Nang_Luong_Mat_Troi() <<" Wh" << endl;
 			}
 			else if(trang_Thai == "OFF"){
 				cout << endl;
@@ -127,7 +95,7 @@ class Den {
 				cout <<"\t\tCong suat: "<< get_Cong_Suat() <<" W"<< endl;
 				cout <<"\t\tPham vi: 0 m^2"<< endl;
 				cout <<"\t\tNang luong tieu thu: "<< fixed << setprecision(2) << get_Nang_Luong_Tieu_Thu() <<" Wh"<< endl;
-				cout <<"\t\tNang luong mat troi: " << fixed << setprecision(2) << get_Nang_Luong_Mat_Troi() <<" W"<< endl;
+				cout <<"\t\tNang luong mat troi: " << fixed << setprecision(2) << get_Nang_Luong_Mat_Troi() <<" Wh"<< endl;
 			} 
 		}
 };
